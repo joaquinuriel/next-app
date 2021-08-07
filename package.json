@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "predeploy": "next build",
     "deploy": "git commit -a -m update && git push"
   },
   "dependencies": {
