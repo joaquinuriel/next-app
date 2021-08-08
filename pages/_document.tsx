@@ -3,7 +3,7 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 export default class MyDocument extends Document {
   render() {
     const manrope =
-      "https://fonts.googleapis.com/css2?family=Manrope:wght@200..800?display=swap";
+      "https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap";
     return (
       <Html lang="en">
         <Head>

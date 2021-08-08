@@ -21,7 +21,7 @@ export default function Home() {
           Joaquin Uriel
         </p>
 
-        <Link href="profile">Profile</Link>
+        <Link href="/profile">Profile</Link>
 
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
