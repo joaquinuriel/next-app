@@ -7,11 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "predeploy": "next build",
-    "deploy": "git commit -a -m update && git push"
+    "pregit": "git fetch && git pull",
+    "git": "git commit -a -m update && git push"
   },
   "dependencies": {
     "classnames": "^2.3.1",
+    "firebase": "^8.9.0",
     "next": "11.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -22,6 +23,7 @@
     "@types/react": "17.0.16",
     "eslint": "7.32.0",
     "eslint-config-next": "11.0.1",
+    "react-firebase-hooks": "^3.0.4",
     "typescript": "4.3.5"
   }
 }
