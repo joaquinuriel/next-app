@@ -6,6 +6,7 @@ import "firebase/auth";
 import "firebase/storage";
 
 export default function Profile() {
+
   const app =
     firebase.apps[0] ||
     firebase.initializeApp({
