@@ -1,0 +1,37 @@
+{
+  "$schema": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/web-manifest.json",
+  "name": "My Next Web App",
+  "short_name": "My App",
+  "start_url": ".",
+  "theme_color": "royalblue",
+  "background_color": "white",
+  "orientation": "portrait",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "./48px.png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "./72px.png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "./96px.png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "./144px.png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "./192px.png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "./512px.png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ]
+}

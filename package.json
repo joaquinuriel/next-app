@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "pregit": "git fetch && git pull",
-    "git": "git commit -a -m update && git push"
+    "git": "git add . && git commit -m update && git push"
   },
   "dependencies": {
     "classnames": "^2.3.1",
