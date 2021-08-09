@@ -1,5 +1,5 @@
 .header
-    position: absolute
+    position: fixed
     top: 0px
 
     width: 100vw
@@ -8,6 +8,9 @@
 
     display: flex
     align-items: center
+
+    background: rgba(255 255 255 / 80%)
+    backdrop-filter: saturate(180%) blur(20px)
 
     &_title
         font-size: x-large
@@ -19,7 +22,7 @@
             color: royalblue
 
 .main
-    margin: 60px 0px
+    margin: 60px
 
 .footer
     position: absolute

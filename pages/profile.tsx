@@ -1,14 +1,15 @@
-import { ChangeEvent, ChangeEventHandler, EventHandler, useState } from "react";
+import { ChangeEvent, useState } from "react";
 // import { GetServerSideProps } from "next";
 import { useAuthState } from "react-firebase-hooks/auth";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/storage";
 
-export default function Profile() {
+import styles from "../styles/profile.module.sass";
+import Layout from "../components/layout";
 
-  const app =
-    firebase.apps[0] ||
+export default function Profile() {
+  if (!firebase.apps.length)
     firebase.initializeApp({
       apiKey: "AIzaSyB_UscU9rpZrYs5TVhmW6eYkBav8D3UWHk",
       authDomain: "my-next-web-app.firebaseapp.com",
@@ -19,7 +20,7 @@ export default function Profile() {
       measurementId: "G-W7DBQQ1TS7",
     });
 
-  const auth = app.auth();
+  const auth = firebase.auth();
   const ref = firebase.storage().ref("images");
   const [user, loading, error] = useAuthState(auth);
   console.log(user, loading, error);
@@ -59,27 +60,39 @@ export default function Profile() {
 
   if (user)
     return (
-      <div
-        style={{
-          margin: "120px",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <h1>Hello {user.displayName} </h1>
-        <input type="file" onChange={upload} />
-        <progress value={progress}></progress>
-        <List />
-      </div>
+      <Layout>
+        <div
+          style={{
+            margin: "120px",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <h1>Hello {user.displayName} </h1>
+          <input type="file" onChange={upload} />
+          <label htmlFor="progress">Progress</label>
+          <progress
+            value={progress}
+            className={styles.progress}
+            id="progress"
+          ></progress>
+          <List />
+        </div>
+      </Layout>
     );
 
-  if (loading) return <h1>Loading...</h1>;
+  // if (loading)
+  //   return (
+  //     <Layout>
+  //       <p>Loading...</p>
+  //     </Layout>
+  //   );
   if (error) return <h1>There was en error</h1>;
 
   return (
-    <div>
+    <Layout>
       <h1>You are not signed in</h1>
       <button onClick={signInWithGoogle}>Sign in</button>
-    </div>
+    </Layout>
   );
 }

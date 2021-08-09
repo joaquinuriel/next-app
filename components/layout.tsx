@@ -1,7 +1,11 @@
 import Link from "next/link";
 import styles from "../styles/layout.module.sass";
 
-export default function Layout({ children }: { children: JSX.Element[] }) {
+export default function Layout({
+  children,
+}: {
+  children: JSX.Element | JSX.Element[];
+}) {
   return (
     <>
       <header className={styles.header}>
