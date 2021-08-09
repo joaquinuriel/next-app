@@ -1,12 +1,12 @@
 import Image from "next/image";
+import { createRef, FormEvent, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import Layout from "../components/layout";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import Layout from "../components/layout";
 import styles from "../styles/chat.module.sass";
-import { FormEvent, useState } from "react";
 
 if (!firebase.apps.length) {
   firebase.initializeApp({
@@ -30,11 +30,14 @@ export default function Chat() {
   const [user, loading, error] = useAuthState(auth);
   const [messages] = useCollectionData(query, { idField: "id" });
   const [text, setText] = useState("");
+  const span = createRef<HTMLSpanElement>();
   const send = (e: FormEvent) => {
     e.preventDefault();
     const { uid, photoURL } = user!;
     const date = new Date();
+    setText("");
     text && store.collection("messages").add({ text, date, uid, photoURL });
+    span.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   if (user) {
@@ -52,6 +55,7 @@ export default function Chat() {
               <Image src={msg.photoURL} width="36px" height="36px"></Image>
             </div>
           ))}
+          <span ref={span}></span>
         </div>
         <form onSubmit={send}>
           <input
@@ -66,13 +70,17 @@ export default function Chat() {
   }
 
   return loading ? (
-    <p>loading</p>
+    <Layout>
+      <p>Loading...</p>
+    </Layout>
   ) : error ? (
-    <p>error</p>
+    <Layout>
+      <p>Loading...</p>
+    </Layout>
   ) : (
-    <div>
+    <Layout>
       <p>You are not signed in</p>
       <button>Sign in</button>
-    </div>
+    </Layout>
   );
 }

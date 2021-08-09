@@ -5,6 +5,8 @@ body {
   font-family: Manrope, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   transition: 500ms;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 a {
