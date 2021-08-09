@@ -6,7 +6,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 import styles from "../styles/chat.module.sass";
-import { createRef, FormEvent, MouseEventHandler, useState } from "react";
+import { FormEvent, useState } from "react";
 
 if (!firebase.apps.length) {
   firebase.initializeApp({
@@ -44,11 +44,12 @@ export default function Chat() {
         <div className={styles.chatbox}>
           {messages?.map((msg) => (
             <div
+              key={msg.id}
               className={msg.uid === user.uid ? styles.sent : styles.received}
             >
-              <p key={msg.id}>{msg.text}</p>
-              <img src={msg.photoURL} alt="" />
-              {/* <Image src={msg.photoURL} width="30px" height="30px"></Image> */}
+              <p>{msg.text}</p>
+              {/* <img src={msg.photoURL} alt="" /> */}
+              <Image src={msg.photoURL} width="36px" height="36px"></Image>
             </div>
           ))}
         </div>

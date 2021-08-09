@@ -16,28 +16,33 @@ export default function Home() {
       <h2 className={styles.title}>My Next Web App</h2>
 
       <div className={styles.grid}>
-        <a href="/profile" className={styles.card}>
-          <h2>Profile &rarr;</h2>
-          <p>Upload files to firebase storage.</p>
-        </a>
+        <Link href="/profile">
+          <a className={styles.card}>
+            <h2>Profile &rarr;</h2>
+            <p>Upload files to firebase storage.</p>
+          </a>
+        </Link>
 
-        <a href="/chat" className={styles.card}>
-          <h2>Chat &rarr;</h2>
-          <p>Learn about Next.js in an interactive course with quizzes!</p>
-        </a>
+        <Link href="/chat">
+          <a className={styles.card}>
+            <h2>Chat &rarr;</h2>
+            <p>Learn about Next.js in an interactive course with quizzes!</p>
+          </a>
+        </Link>
 
-        <a
-          href="https://github.com/vercel/next.js/tree/master/examples"
-          className={styles.card}
-        >
-          <h2>Examples &rarr;</h2>
-          <p>Discover and deploy boilerplate example Next.js projects.</p>
-        </a>
+        <Link href="https://github.com/vercel/next.js/tree/master/examples">
+          <a className={styles.card}>
+            <h2>Examples &rarr;</h2>
+            <p>Discover and deploy boilerplate example Next.js projects.</p>
+          </a>
+        </Link>
 
-        <a href="/about" className={styles.card}>
-          <h2>About &rarr;</h2>
-          <p>Find out more about me.</p>
-        </a>
+        <Link href="/about">
+          <a className={styles.card}>
+            <h2>About &rarr;</h2>
+            <p>Find out more about me.</p>
+          </a>
+        </Link>
       </div>
     </Layout>
   );
