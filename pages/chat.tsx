@@ -43,7 +43,7 @@ export default function Chat() {
   if (user) {
     return (
       <Layout>
-        <h1>Hello {user.displayName}</h1>
+        <h1>Signed in as {user.displayName}</h1>
         <div className={styles.chatbox}>
           {messages?.map((msg) => (
             <div
@@ -57,13 +57,20 @@ export default function Chat() {
           ))}
           <span ref={span}></span>
         </div>
-        <form onSubmit={send}>
+        {/* <span
+          className={styles.span}
+          onClick={() => span.current?.scrollIntoView({ behavior: "smooth" })}
+        >
+          &darr;
+        </span> */}
+        <form className={styles.form} onSubmit={send}>
           <input
             type="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
-          />
-          <button type="submit">&rarr;</button>
+          /> 
+
+          <button type="submit">&nbsp;-&gt;&nbsp;</button>
         </form>
       </Layout>
     );

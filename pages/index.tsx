@@ -18,28 +18,28 @@ export default function Home() {
       <div className={styles.grid}>
         <Link href="/profile">
           <a className={styles.card}>
-            <h2>Profile &rarr;</h2>
+            <h2>Profile -&gt;</h2>
             <p>Upload files to firebase storage.</p>
           </a>
         </Link>
 
         <Link href="/chat">
           <a className={styles.card}>
-            <h2>Chat &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
+            <h2>Chat -&gt;</h2>
+            <p>Live group chat useing firebase firestore!</p>
           </a>
         </Link>
 
         <Link href="https://github.com/vercel/next.js/tree/master/examples">
           <a className={styles.card}>
-            <h2>Examples &rarr;</h2>
+            <h2>Examples -&gt;</h2>
             <p>Discover and deploy boilerplate example Next.js projects.</p>
           </a>
         </Link>
 
         <Link href="/about">
           <a className={styles.card}>
-            <h2>About &rarr;</h2>
+            <h2>About -&gt;</h2>
             <p>Find out more about me.</p>
           </a>
         </Link>

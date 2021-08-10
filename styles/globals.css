@@ -16,6 +16,10 @@ a {
   text-decoration: none;
 }
 
+button {
+  font-family: Manrope;
+}
+
 * {
   box-sizing: border-box;
   transition: 250ms;
