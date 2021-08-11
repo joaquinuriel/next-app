@@ -1,0 +1,55 @@
+@mixin phone
+    @media (max-width: 600px)
+        @content
+@mixin tablet
+    @media (min-width: 600px)
+        @content
+@mixin pc
+    @media (min-width: 992)
+        @content
+
+html
+    @include phone
+        font-size: 12px
+    @include pc
+        font-size: 16px
+
+h1
+    font-size: 4rem
+    font-weight: 800
+    text-align: center
+    margin: 0
+
+h2
+    font-size: 3rem
+    font-weight: 700
+    margin: 0
+
+h3
+    font-size: 2.5rem
+    font-weight: 600
+    margin: 0
+
+h4
+    font-size: 2rem
+    font-weight: 500
+    margin: 0
+
+button
+    font-family: Manrope
+
+a
+    font-size: 1.25rem
+    font-weight: 500
+    color: inherit
+    text-decoration: none
+
+    &:hover
+        color: royalblue
+
+p
+    color: rgb(16 16 16)
+
+::selection
+    color: white
+    background: rgb(117, 170, 219)

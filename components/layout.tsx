@@ -1,11 +1,12 @@
+import { ReactNode } from "react";
 import Link from "next/link";
-import styles from "../styles/layout.module.sass";
+import styles from "styles/layout.module.sass";
+// import Modal from "components/modal"
+interface LayoutProps {
+  children: ReactNode;
+}
 
-export default function Layout({
-  children,
-}: {
-  children: JSX.Element | JSX.Element[];
-}) {
+export default function Layout({ children }: LayoutProps) {
   return (
     <>
       <header className={styles.header}>
@@ -15,6 +16,7 @@ export default function Layout({
         <Link href="/profile">Profile</Link>
       </header>
       <main className={styles.main}>{children}</main>
+      {/* <Modal /> */}
       <footer className={styles.footer}>
         <Link href="/about">
           <a className={styles.footer_title}>

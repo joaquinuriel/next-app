@@ -1,5 +1,6 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, createRef, useState } from "react";
 // import { GetServerSideProps } from "next";
+import { GetServerSidePropsContext } from "next";
 import { useAuthState } from "react-firebase-hooks/auth";
 import firebase from "firebase/app";
 import "firebase/auth";
@@ -7,9 +8,14 @@ import "firebase/storage";
 
 import styles from "../styles/profile.module.sass";
 import Layout from "../components/layout";
-import { GetServerSidePropsContext } from "next";
+// import { useModal } from "components/modal";
+
+import classNames from "classnames";
 
 export default function Profile() {
+  // const { setTitle, setDescription, setInput, setButtons } = useModal();
+  // setTitle() 
+
   if (!firebase.apps.length)
     firebase.initializeApp({
       apiKey: "AIzaSyB_UscU9rpZrYs5TVhmW6eYkBav8D3UWHk",
@@ -32,14 +38,23 @@ export default function Profile() {
   };
 
   const [progress, setProgress] = useState(0);
+  const [uploading, setUploading] = useState(false);
+  const [uploaded, setUploaded] = useState(false);
+
+  const fileInput = createRef<HTMLInputElement>();
   const upload = ({ target }: ChangeEvent<HTMLInputElement>) => {
     target.files
       ? [...target.files].forEach((file) => {
           let task = ref.child(file.name).put(file);
           task.on("state_changed", (snap) => {
             setProgress(snap.bytesTransferred / snap.totalBytes);
+            setUploading(true);
           });
-          task.then(console.log, console.log);
+          task.then(() => {
+            setUploading(false);
+            setUploaded(true);
+            setTimeout(() => setUploaded(false), 1000);
+          }, console.log);
         })
       : alert("no files");
   };
@@ -70,12 +85,18 @@ export default function Profile() {
           }}
         >
           <h1>Hello {user.displayName} </h1>
-          <input type="file" onChange={upload} />
-          <label htmlFor="progress">Progress</label>
+          <input type="file" ref={fileInput} onChange={upload} hidden />
+          <label htmlFor="progress" hidden>
+            Progress
+          </label>
           <progress
             value={progress}
-            className={styles.progress}
+            className={classNames({
+              loading: uploading,
+              loaded: uploaded,
+            })}
             id="progress"
+            onClick={() => fileInput.current && fileInput.current.click()}
           ></progress>
           <List />
         </div>
@@ -99,7 +120,7 @@ export default function Profile() {
 }
 
 // export async function getServerSideProps() {
-  // let app 
+// let app
 //   if (!firebase.apps.length) firebase.initializeApp({
 //     apiKey: "AIzaSyB_UscU9rpZrYs5TVhmW6eYkBav8D3UWHk",
 //     authDomain: "my-next-web-app.firebaseapp.com",

@@ -27,6 +27,13 @@ const collection = store.collection("messages");
 const query = collection.orderBy("date").limit(25);
 
 export default function Chat() {
+  // fetch("/sw.js", {
+  //   method: "post",
+  //   body: "body",
+  // })
+  //   .then((response) => response.text())
+  //   .then(console.log);
+
   const [user, loading, error] = useAuthState(auth);
   const [messages] = useCollectionData(query, { idField: "id" });
   const [text, setText] = useState("");
@@ -68,7 +75,7 @@ export default function Chat() {
             type="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
-          /> 
+          />
 
           <button type="submit">&nbsp;-&gt;&nbsp;</button>
         </form>

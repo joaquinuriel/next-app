@@ -11,6 +11,8 @@ const require = async (request) => {
 self.onfetch = (event) => {
   let { request, respondWith } = event;
   let { match } = caches;
+  if (request.method !== "GET" && request.url.endsWith("push"))
+    return void push(request);
   if (request.method !== "GET") return;
   if (!request.url.includes("http")) return;
   event.waitUntil(async () => {
@@ -21,3 +23,31 @@ self.onfetch = (event) => {
       : respondWith((await match(request)) || require(request));
   });
 };
+
+// const push = async (request) => {
+//   console.log("Received a push request", request);
+//   const { title, body, icon } = await request.json();
+//   const tag = "simple-push-demo-notification-tag";
+//   self.registration.showNotification(title, { body, icon });
+// };
+
+// self.onpush = (event) => {
+//   const push = (event) => {
+//     console.log("Received a push message", event);
+
+//     var title = "Yay a message.";
+//     var body = "We have received a push message.";
+//     var icon = "/192px.png";
+//     var tag = "simple-push-demo-notification-tag";
+
+//     event.waitUntil(
+//       self.registration.showNotification(title, { body, icon, tag })
+//     );
+//   };
+
+//   Notification.permission === "granted"
+//     ? push(event)
+//     : Notification.requestPermission().then((permission) => {
+//         permission === "granted" && push(event);
+//       });
+// };
