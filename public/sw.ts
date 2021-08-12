@@ -35,6 +35,10 @@ export namespace serviceWorker {
     });
   };
 
+  self.registration.pushManager.getSubscription().then((value) => {
+    value ? console.log(value) : self.registration.pushManager.subscribe();
+  });
+}
 //   const push = async (request: Request) => {
 //     console.log("Received a push request", request);
 //     const { title, body, icon } = await request.json();
@@ -62,6 +66,5 @@ export namespace serviceWorker {
 //           permission === "granted" && callback(event);
 //         });
 //   };
-}
 
 // self.onpus

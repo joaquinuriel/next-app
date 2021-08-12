@@ -24,6 +24,8 @@ self.onfetch = (event) => {
   });
 };
 
+// self.registration.pushManager.subscribe().then(console.log);
+
 // const push = async (request) => {
 //   console.log("Received a push request", request);
 //   const { title, body, icon } = await request.json();
