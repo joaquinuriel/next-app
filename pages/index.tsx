@@ -1,17 +1,11 @@
 import Head from "next/head";
 import Link from "next/link";
 import Layout from "components/layout";
-import styles from "styles/Home.module.css";
-import classNames from "classnames";
+import styles from "styles/home.module.sass";
+import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
 
 export default function Home() {
-  // const promise = fetch("/sw.js", {
-  //   method: "post",
-  //   body: "body",
-  // });
-  // promise.then(console.log);
-
   return (
     <Layout>
       <Head>
@@ -21,7 +15,7 @@ export default function Home() {
 
       <h1>My Next Web App</h1>
 
-      <div className={styles.grid}>
+      <div className={cx("grid")}>
         <Link href="/profile">
           <a className={styles.card}>
             <h2>Profile -&gt;</h2>

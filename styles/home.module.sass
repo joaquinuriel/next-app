@@ -1,0 +1,53 @@
+.title
+  margin: 0
+  font-size: 4rem
+  line-height: 1.15
+
+  &, .description
+    text-align: center
+
+.description
+  font-size: 1.5rem
+  line-height: 1.5
+
+.grid
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  justify-content: center
+  margin-top: 3rem
+
+.card
+  margin: 1rem
+  padding: 1.5rem
+  border: 1px solid var(--light)
+  border-radius: 10px
+  text-align: left
+  text-decoration: none
+  color: inherit
+  transition: color 0.15s ease, border-color 0.15s ease
+  /* width: 45%; */
+
+  &:hover,
+  &:focus,
+  &:active
+    border-color: var(--primary)
+    color: var(--primary)
+
+  & h2
+    margin: 0 0 1rem
+    font-size: 1.5rem
+
+  & p
+    margin: 0
+    font-size: 1.25rem
+    line-height: 1.5
+
+.logo
+  height: 1em
+  margin-left: 0.5rem
+
+@media (max-width: 600px)
+  .grid
+    flex-direction: column
+    width: 100%

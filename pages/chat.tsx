@@ -5,8 +5,8 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
-import Layout from "../components/layout";
-import styles from "../styles/chat.module.sass";
+import Layout from "components/layout";
+import styles from "styles/chat.module.sass";
 
 if (!firebase.apps.length) {
   firebase.initializeApp({
@@ -27,13 +27,6 @@ const collection = store.collection("messages");
 const query = collection.orderBy("date").limit(25);
 
 export default function Chat() {
-  // fetch("/sw.js", {
-  //   method: "post",
-  //   body: "body",
-  // })
-  //   .then((response) => response.text())
-  //   .then(console.log);
-
   const [user, loading, error] = useAuthState(auth);
   const [messages] = useCollectionData(query, { idField: "id" });
   const [text, setText] = useState("");
