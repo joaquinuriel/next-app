@@ -13,6 +13,7 @@ export default class MyDocument extends Document {
           <link rel="manifest" href="/manifest.json" />
           <link rel="apple-touch-icon" href="/192x192.png" />
           <link rel="stylesheet" href={manrope} />
+          {/* <link rel="stylesheet" href="https://rsms.me/inter/inter.css" /> */}
         </Head>
         <body>
           <Main />

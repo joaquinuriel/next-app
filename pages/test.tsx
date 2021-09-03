@@ -2,8 +2,24 @@ import Image from "next/image";
 import Layout from "components/layout";
 import img from "public/192px.png";
 // import vercel from ""
+import { signIn, useSession } from "next-auth/client";
+import { useEffect } from "react";
 
 export default function Test() {
+  const [session, loading] = useSession();
+  useEffect(() => {
+    loading
+      ? console.log("loading")
+      : session
+      ? console.log(session)
+      : signIn();
+  }, [session, loading]);
+  // loading
+  //   ? console.log("loading")
+  //   : session
+  //   ? console.log(session)
+  //   : auth.signIn();
+
   return (
     <Layout>
       <h1>Testing site</h1>

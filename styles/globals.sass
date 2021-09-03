@@ -1,11 +1,19 @@
+// stylelint-disable
+@use "palette"
+@use "typography"
+@use "cards"
+@use "mixins"
+
+// stylelint-eable
+// @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&display=swap')
 
 body
   position: absolute
-  overflow-x: hidden
-  overflow-y: auto
   min-height: 100vh
   margin: 0
   font-family: Manrope, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif
+  overflow-x: hidden
+  overflow-y: auto
   transition: 500ms
 
 *
@@ -21,12 +29,11 @@ progress
   overflow: hidden
   width: 100%
   height: 60px
+  appearance: none
   border-radius: 30px
   cursor: pointer
-  appearance: none
 
 progress::after
-  content: 'upload file'
   position: absolute
   top: 0
   right: 0
@@ -34,9 +41,10 @@ progress::after
   left: 0
   width: fit-content
   height: fit-content
-  margin: auto
   padding: 6px
+  margin: auto
   border-radius: 6px
+  content: 'upload file'
   font-size: 1.25rem
   font-weight: 500
 
